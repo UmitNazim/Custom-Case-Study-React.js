@@ -1,0 +1,13 @@
+{
+  "general": {
+    "age": "Age",
+    "email": "E-Mail",
+    "login": "Login",
+    "name": "Name",
+    "password": "Password",
+    "register": "Register",
+    "sex": "Sex",
+    "surname": "Surname",
+    "forgotPassword": "Forgot Password"
+  }
+}

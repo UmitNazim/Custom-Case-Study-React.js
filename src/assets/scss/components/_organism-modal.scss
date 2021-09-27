@@ -1,0 +1,54 @@
+@mixin width-generator($margin-on-mobile, $width-on-desktop) {
+  width: calc(100% - #{$margin-on-mobile});
+  @media (min-width: 767px) {
+    width: $width-on-desktop;
+  }
+}
+
+.organism-modal {
+  &__overlay {
+    inset: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+
+  &__main {
+    flex: auto;
+  }
+
+  &__content {
+    border-radius: 4px;
+    max-height: 100vh;
+    overflow: overlay;
+    background-color: var(--seas-hell);
+    animation: coming 0.2s ease-out forwards;
+    @media (min-width: 767px) {
+      max-height: 80vh;
+    }
+  }
+
+  &__fullscreen-on-mobile {
+    @media (max-width: 576px) {
+      margin: 0;
+      height: 100vh;
+      width: 100% !important;
+    }
+  }
+
+  &__sm {
+    @include width-generator($margin-on-mobile: 40px, $width-on-desktop: 350px);
+  }
+
+  &__md {
+    @include width-generator($margin-on-mobile: 30px, $width-on-desktop: 450px);
+  }
+
+  &__lg {
+    @include width-generator($margin-on-mobile: 20px, $width-on-desktop: 550px);
+  }
+
+  &__xl {
+    @include width-generator($margin-on-mobile: 10px, $width-on-desktop: 650px);
+  }
+}

@@ -1,0 +1,2 @@
+export const SET_GREATING = 'SET_GREATING';
+export const RESET_GREATING = 'RESET_GREATING';

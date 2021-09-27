@@ -1,0 +1,13 @@
+{
+  "general": {
+    "age": "Yaş",
+    "email": "E-Posta",
+    "login": "Giriş Yap",
+    "name": "Adı",
+    "password": "Şifre",
+    "register": "Kayıt Ol",
+    "sex": "Cinsiyet",
+    "surname": "Soyad",
+    "forgotPassword": "Şifremi Unuttum"
+  }
+}

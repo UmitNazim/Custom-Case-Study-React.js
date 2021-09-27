@@ -1,0 +1,34 @@
+:root {
+  --baby-blue: #d4f1f4;
+  --blue-green: #75e6da;
+  --blue-grotto: #189ab4;
+  --navy-blue: #05445e;
+  --pewter: #c7c8cb;
+  --white: #f1f3f3;
+  --gunmetal: #e0e5e7;
+  --terra-cotta: #ca6641;
+  --rose-red: #c85250;
+  --metalic-silver: #bcc6cc;
+  --soap-stone: #fffbf9;
+  --mid-grey: #5f5f6e;
+  --regent-grey: #86949f;
+  --seas-hell: #f1f1f1;
+  --antique-white: #faebd7;
+}
+
+$main-colors: (
+  "baby-blue": var(--baby-blue),
+  "blue-green": var(--blue-green),
+  "blue-grotto": var(--blue-grotto),
+  "navy-blue": var(--navy-blue),
+  "pewter": var(--pewter),
+  "brose-red": var(--rose-red),
+  "terra-cotta": var(--terra-cotta),
+  "gunmetal": var(--gunmetal),
+  "metalic-silver": var(--metalic-silver),
+  "soap-stone": var(--soap-stone),
+  "mid-grey": var(--mid-grey),
+  "regent-grey": var(--regent-grey),
+  "seas-hell": var(--seas-hell),
+  "antique-white": var(--antique-white),
+);
