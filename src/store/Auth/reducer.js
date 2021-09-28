@@ -1,11 +1,13 @@
-import { SET_GREATING, RESET_GREATING } from './actions';
-import DEFAUT_GREATING from './state';
+import { GET_PRODUCTS, GET_PRODUCTS_START } from './actions';
+import INITIAL_STATE from './state';
 
-const greating = (state = DEFAUT_GREATING, { type = null, payload = null } = {}) => {
+const reducer = (state = INITIAL_STATE, { type, payload } = {}) => {
   const actionBox = {
-    [SET_GREATING]: payload,
-    [RESET_GREATING]: DEFAUT_GREATING,
+    [GET_PRODUCTS_START]: { ...state, isLoading: true },
+    [GET_PRODUCTS]: { ...state, products: payload, isLoading: false },
   };
+
   return actionBox[type] || state;
 };
-export default greating;
+
+export default reducer;

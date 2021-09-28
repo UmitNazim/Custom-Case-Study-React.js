@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AtomButton, AtomInput, MoleculeCard } from 'components';
 
-// import { connect } from 'react-redux';
-
-// const mapStateToProps = (state, ownProps) => ({});
-
-// const mapDispatchToProps = {};
-
 function LoginContent() {
   let { t } = useTranslation();
   const [email, setEmail] = useState('');
