@@ -13,13 +13,7 @@ function AtomInput({ disabled = false, label = null, onChange, className, ...pro
           {label}
         </label>
       )}
-      <input
-        onChange={({ target: { value } }) => onChange(value)}
-        className={options}
-        type="text"
-        disabled={disabled}
-        {...props}
-      />
+      <input onChange={onChange} className={options} type="text" disabled={disabled} {...props} />
     </div>
   );
 }

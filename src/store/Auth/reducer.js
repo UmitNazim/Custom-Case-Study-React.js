@@ -1,12 +1,14 @@
-import { GET_PRODUCTS } from './actions';
+import { GET_USER, GET_USER_FORGOT_PASSWORD, GET_USER_REGISTRATION } from './actions';
 import INITIAL_STATE from './state';
 
-const reducer = (state = INITIAL_STATE, { type, payload } = {}) => {
+const auth = (state = INITIAL_STATE, { type, payload } = {}) => {
   const actionBox = {
-    [GET_PRODUCTS]: { ...state, products: payload, isLoading: false },
+    [GET_USER]: { ...state, user: payload },
+    [GET_USER_FORGOT_PASSWORD]: { ...state },
+    [GET_USER_REGISTRATION]: { ...state },
   };
 
   return actionBox[type] || state;
 };
 
-export default reducer;
+export default auth;

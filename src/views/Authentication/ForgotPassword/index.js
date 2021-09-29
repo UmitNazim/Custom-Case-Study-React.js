@@ -1,19 +1,25 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AtomButton, AtomInput, MoleculeCard } from 'components';
+import { forgotPassword } from 'store/Auth/actions';
+import { AtomButton, AtomInput, MoleculeCard, AtomLoader } from 'components';
 
-function ForgotPassword() {
+const ForgotPassword = ({ forgotPassword, history }) => {
   let { t } = useTranslation();
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onForgotPassword = (event) => {
+  const onForgotPassword = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
+    await forgotPassword({ email }).then(() => history.push('/login'));
+    setIsLoading(false);
   };
 
   return (
     <div className="min-vh-100 d-flex justify-content-center align-items-center">
-      <MoleculeCard style={{ width: '35%' }} title="Forgot Password Form">
+      <MoleculeCard style={{ width: '500px' }} title="Forgot Password Form">
         <form onSubmit={onForgotPassword}>
           <AtomInput
             label={t('general.email')}
@@ -21,13 +27,15 @@ function ForgotPassword() {
             value={email}
             placeholder={t('general.email')}
             className={['mt-2']}
-            onChange={(value) => setEmail(value)}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             required
           />
+
           <AtomButton type="submit" block className={['my-4']} size="md">
-            {t('general.forgotPassword')}
+            {isLoading ? <AtomLoader /> : t('general.forgotPassword')}
           </AtomButton>
+
           <span className="atom-label">
             Did you remember your password ?
             <Link to="/login" className="text-decoration-none">
@@ -38,5 +46,6 @@ function ForgotPassword() {
       </MoleculeCard>
     </div>
   );
-}
-export default ForgotPassword;
+};
+
+export default connect(null, { forgotPassword })(ForgotPassword);

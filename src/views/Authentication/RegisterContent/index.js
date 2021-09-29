@@ -1,72 +1,53 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { AtomInput, AtomButton, MoleculeCard } from 'components';
+import { register } from 'store/Auth/actions';
+import { useTranslation } from 'react-i18next';
+import { AtomInput, AtomButton, MoleculeCard, AtomLoader } from 'components';
 
-function RegisterContent() {
+const RegisterContent = ({ register, history }) => {
   let { t } = useTranslation();
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [age, setAge] = useState('');
-  const [sex, setSex] = useState('');
+  const [user, setAllValues] = useState({ name: '', surname: '', email: '', password: '' });
+  const [isLoading, setIsLoading] = useState(false);
+  const changeHandler = ({ target: { name, value } }) => setAllValues({ ...user, [name]: value });
 
-  const onRegister = (event) => {
+  const onRegister = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
+    await register(user).then(() => history.push('/login'));
+    setIsLoading(false);
   };
+
+  const inputFields = [
+    { type: 'text', field: 'name' },
+    { type: 'text', field: 'surname' },
+    { type: 'email', field: 'email' },
+    { type: 'password', field: 'password' },
+  ];
 
   return (
     <div className="min-vh-100 d-flex justify-content-center align-items-center">
-      <MoleculeCard style={{ width: '35%' }} title="Register Form">
+      <MoleculeCard style={{ width: '500px' }} title="Register Form">
         <form onSubmit={onRegister}>
           <div className="row">
-            <div className="col-12">
-              <AtomInput
-                label={t('general.name')}
-                name="name"
-                value={name}
-                placeholder={t('general.name')}
-                onChange={(value) => setName(value)}
-                required
-                className={['mt-2']}
-              />
-            </div>
-            <div className="col-12">
-              <AtomInput
-                label={t('general.surname')}
-                name="surname"
-                value={surname}
-                placeholder={t('general.surname')}
-                onChange={(value) => setSurname(value)}
-                required
-                className={['mt-2']}
-              />
-            </div>
-            <div className="col-12">
-              <AtomInput
-                label={t('general.age')}
-                name="age"
-                value={age}
-                placeholder={t('general.age')}
-                onChange={(value) => setAge(value)}
-                type="number"
-                required
-                className={['mt-2']}
-              />
-            </div>
-            <div className="col-12">
-              <AtomInput
-                label={t('general.sex')}
-                name="sex"
-                value={sex}
-                placeholder={t('general.sex')}
-                onChange={(value) => setSex(value)}
-                required
-                className={['mt-2']}
-              />
-            </div>
+            {inputFields.map(({ type, field }, index) => (
+              <div className="col-12" key={`register-form-field-${index}`}>
+                <AtomInput
+                  label={t(`general.${field}`)}
+                  name={field}
+                  value={user[field]}
+                  placeholder={t(`general.${field}`)}
+                  onChange={changeHandler}
+                  required
+                  type={type}
+                  className={['mt-2']}
+                />
+              </div>
+            ))}
           </div>
+
           <AtomButton type="submit" block className={['my-4']} size="md">
-            {t('general.register')}
+            {isLoading ? <AtomLoader /> : t('general.register')}
           </AtomButton>
         </form>
         <span className="atom-label">
@@ -78,6 +59,6 @@ function RegisterContent() {
       </MoleculeCard>
     </div>
   );
-}
+};
 
-export default RegisterContent;
+export default connect(null, { register })(RegisterContent);
