@@ -22,7 +22,7 @@ function LoginContent() {
             value={email}
             placeholder={t('general.email')}
             className={['mt-2']}
-            onChange={({ target: { value } }) => setEmail(value)}
+            onChange={(value) => setEmail(value)}
             type="email"
             required
           />
@@ -32,7 +32,7 @@ function LoginContent() {
             value={password}
             placeholder={t('general.password')}
             className={['mt-2']}
-            onChange={({ target: { value } }) => setPassword(value)}
+            onChange={(value) => setPassword(value)}
             type="password"
             required
           />

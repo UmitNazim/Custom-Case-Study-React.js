@@ -25,7 +25,7 @@ function RegisterContent() {
                 name="name"
                 value={name}
                 placeholder={t('general.name')}
-                onChange={({ target: { value } }) => setName(value)}
+                onChange={(value) => setName(value)}
                 required
                 className={['mt-2']}
               />
@@ -36,7 +36,7 @@ function RegisterContent() {
                 name="surname"
                 value={surname}
                 placeholder={t('general.surname')}
-                onChange={({ target: { value } }) => setSurname(value)}
+                onChange={(value) => setSurname(value)}
                 required
                 className={['mt-2']}
               />
@@ -47,7 +47,7 @@ function RegisterContent() {
                 name="age"
                 value={age}
                 placeholder={t('general.age')}
-                onChange={({ target: { value } }) => setAge(value)}
+                onChange={(value) => setAge(value)}
                 type="number"
                 required
                 className={['mt-2']}
@@ -59,7 +59,7 @@ function RegisterContent() {
                 name="sex"
                 value={sex}
                 placeholder={t('general.sex')}
-                onChange={({ target: { value } }) => setSex(value)}
+                onChange={(value) => setSex(value)}
                 required
                 className={['mt-2']}
               />

@@ -21,7 +21,7 @@ function ForgotPassword() {
             value={email}
             placeholder={t('general.email')}
             className={['mt-2']}
-            onChange={({ target: { value } }) => setEmail(value)}
+            onChange={(value) => setEmail(value)}
             type="email"
             required
           />
