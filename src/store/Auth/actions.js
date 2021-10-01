@@ -1,20 +1,18 @@
 import axios from 'utils/api';
-export const GET_USER = 'GET_USER';
-export const GET_USER_REGISTRATION = 'GET_USER_REGISTRATION';
-export const GET_USER_FORGOT_PASSWORD = 'GET_USER_FORGOT_PASSWORD';
+import { GET_USER_REGISTRATION, GET_USER_FORGOT_PASSWORD, GET_USER } from './types';
 
-export const register = (user) => async (dispatch) => {
+export const register = (item) => async (dispatch) => {
   await axios
-    .post('/register', user)
+    .post('/register', item)
     .then(() => dispatch({ type: GET_USER_REGISTRATION, payload: null }));
 };
 
-export const forgotPassword = (user) => async (dispatch) => {
+export const forgotPassword = (item) => async (dispatch) => {
   await axios
-    .post('/forgot-password', user)
+    .post('/forgot-password', item)
     .then(() => dispatch({ type: GET_USER_FORGOT_PASSWORD, payload: null }));
 };
 
-export const login = (user) => async (dispatch) => {
-  await axios.post('/login', user).then(({ data }) => dispatch({ type: GET_USER, payload: data }));
+export const login = (item) => async (dispatch) => {
+  await axios.post('/login', item).then(({ data }) => dispatch({ type: GET_USER, payload: data }));
 };

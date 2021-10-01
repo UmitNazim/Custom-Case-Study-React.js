@@ -1,4 +1,5 @@
-import { GET_USER, GET_USER_FORGOT_PASSWORD, GET_USER_REGISTRATION } from './actions';
+import { GET_USER, GET_USER_FORGOT_PASSWORD, GET_USER_REGISTRATION } from './types';
+
 import INITIAL_STATE from './state';
 
 const auth = (state = INITIAL_STATE, { type, payload } = {}) => {

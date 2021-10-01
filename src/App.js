@@ -11,13 +11,11 @@ const Fallback = () => (
 
 const App = () => {
   return (
-    <div className="container-fluid">
-      <Router>
-        <Suspense fallback={<Fallback />}>
-          <Switch>{routes}</Switch>
-        </Suspense>
-      </Router>
-    </div>
+    <Router>
+      <Suspense fallback={<Fallback />}>
+        <Switch>{routes}</Switch>
+      </Suspense>
+    </Router>
   );
 };
 

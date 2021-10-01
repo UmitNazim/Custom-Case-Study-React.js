@@ -1,4 +1,4 @@
 const INITIAL_STATE = {
-  products: [],
+  user: [],
 };
 export default INITIAL_STATE;
