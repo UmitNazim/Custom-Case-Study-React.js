@@ -1,2 +1,4 @@
-const DEFAULT_GREATING = 'hello, vanilla redux';
-export default DEFAULT_GREATING;
+const INITIAL_STATE = {
+  user: [],
+};
+export default INITIAL_STATE;

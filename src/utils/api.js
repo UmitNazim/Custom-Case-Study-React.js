@@ -7,5 +7,9 @@ const axios = Axios.create({
 });
 
 axios.defaults.headers.common['Accept-Language'] = process.env.REACT_APP_DEFAULT_LOCALE;
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => Promise.reject(error),
+);
 
 export default axios;

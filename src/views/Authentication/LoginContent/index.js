@@ -1,50 +1,52 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { login } from 'store/Auth/actions';
 import { useTranslation } from 'react-i18next';
-import { AtomButton, AtomInput, MoleculeCard } from 'components';
+import { AtomButton, AtomInput, MoleculeCard, AtomLoader } from 'components';
 
-// import { connect } from 'react-redux';
-
-// const mapStateToProps = (state, ownProps) => ({});
-
-// const mapDispatchToProps = {};
-
-function LoginContent() {
+const LoginContent = ({ login, history }) => {
   let { t } = useTranslation();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setAllValues] = useState({ email: '', password: '' });
+  const changeHandler = ({ target: { name, value } }) => setAllValues({ ...user, [name]: value });
 
-  const onLogin = (event) => {
+  const onLogin = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
+    await login(user).then(() => history.push('/'));
+    setIsLoading(false);
   };
 
   return (
     <div className="min-vh-100 d-flex justify-content-center align-items-center">
-      <MoleculeCard style={{ width: '35%' }} title="Login Form">
+      <MoleculeCard style={{ width: '500px' }} title="Login Form">
         <form onSubmit={onLogin}>
           <AtomInput
             label={t('general.email')}
             name="email"
-            value={email}
+            value={user.email}
             placeholder={t('general.email')}
             className={['mt-2']}
-            onChange={({ target: { value } }) => setEmail(value)}
+            onChange={changeHandler}
             type="email"
             required
           />
           <AtomInput
             label={t('general.password')}
             name="password"
-            value={password}
+            value={user.password}
             placeholder={t('general.password')}
             className={['mt-2']}
-            onChange={({ target: { value } }) => setPassword(value)}
+            onChange={changeHandler}
             type="password"
             required
           />
+
           <AtomButton type="submit" block className={['my-4']} size="md">
-            {t('general.login')}
+            {isLoading ? <AtomLoader /> : t('general.login')}
           </AtomButton>
+
           <span className="atom-label">
             If you do not have an account?
             <Link to="/register" className="text-decoration-none">
@@ -64,5 +66,6 @@ function LoginContent() {
       </MoleculeCard>
     </div>
   );
-}
-export default LoginContent;
+};
+
+export default connect(null, { login })(LoginContent);

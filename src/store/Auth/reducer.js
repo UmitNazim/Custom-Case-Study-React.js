@@ -1,11 +1,15 @@
-import { SET_GREATING, RESET_GREATING } from './actions';
-import DEFAUT_GREATING from './state';
+import { GET_USER, GET_USER_FORGOT_PASSWORD, GET_USER_REGISTRATION } from './types';
 
-const greating = (state = DEFAUT_GREATING, { type = null, payload = null } = {}) => {
+import INITIAL_STATE from './state';
+
+const auth = (state = INITIAL_STATE, { type, payload } = {}) => {
   const actionBox = {
-    [SET_GREATING]: payload,
-    [RESET_GREATING]: DEFAUT_GREATING,
+    [GET_USER]: { ...state, user: payload },
+    [GET_USER_FORGOT_PASSWORD]: { ...state },
+    [GET_USER_REGISTRATION]: { ...state },
   };
+
   return actionBox[type] || state;
 };
-export default greating;
+
+export default auth;
