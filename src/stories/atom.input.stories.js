@@ -1,8 +1,8 @@
-import { AtomInput } from 'components';
+import { MoleculeInput } from 'components';
 
 export default {
-  title: 'AtomInput',
-  component: AtomInput,
+  title: 'MoleculeInput',
+  component: MoleculeInput,
   argTypes: {
     type: {
       control: { type: 'radio' },
@@ -11,7 +11,7 @@ export default {
   },
 };
 
-const Template = (args) => <AtomInput {...args} />;
+const Template = (args) => <MoleculeInput {...args} />;
 export const Input = Template.bind({});
 Input.args = {
   placeholder: 'Enter Name',

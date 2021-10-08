@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-function AtomInput({ disabled = false, label = null, onChange, className, ...props }) {
+function MoleculeInput({ disabled = false, label = null, onChange, className, ...props }) {
   let options = classNames({
-    'atom-input': true,
-    'atom-input__disabled': disabled,
+    'molecule-input': true,
+    'molecule-input__disabled': disabled,
   });
   return (
     <div className={className}>
@@ -18,7 +18,7 @@ function AtomInput({ disabled = false, label = null, onChange, className, ...pro
   );
 }
 
-AtomInput.propTypes = {
+MoleculeInput.propTypes = {
   disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   label: PropTypes.string,
@@ -26,4 +26,4 @@ AtomInput.propTypes = {
   onChange: PropTypes.func,
 };
 
-export default AtomInput;
+export default MoleculeInput;

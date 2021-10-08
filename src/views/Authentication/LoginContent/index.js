@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { login } from 'store/Auth/actions';
 import { useTranslation } from 'react-i18next';
-import { AtomButton, AtomInput, MoleculeCard, AtomLoader } from 'components';
+import { AtomButton, MoleculeInput, MoleculeCard, AtomLoader } from 'components';
 
 const LoginContent = ({ login, history }) => {
   let { t } = useTranslation();
@@ -22,7 +22,7 @@ const LoginContent = ({ login, history }) => {
     <div className="min-vh-100 d-flex justify-content-center align-items-center">
       <MoleculeCard style={{ width: '500px' }} title="Login Form">
         <form onSubmit={onLogin}>
-          <AtomInput
+          <MoleculeInput
             label={t('general.email')}
             name="email"
             value={user.email}
@@ -32,7 +32,7 @@ const LoginContent = ({ login, history }) => {
             type="email"
             required
           />
-          <AtomInput
+          <MoleculeInput
             label={t('general.password')}
             name="password"
             value={user.password}

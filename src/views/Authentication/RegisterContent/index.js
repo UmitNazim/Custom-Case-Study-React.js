@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { register } from 'store/Auth/actions';
 import { useTranslation } from 'react-i18next';
-import { AtomInput, AtomButton, MoleculeCard, AtomLoader } from 'components';
+import { MoleculeInput, AtomButton, MoleculeCard, AtomLoader } from 'components';
 
 const RegisterContent = ({ register, history }) => {
   let { t } = useTranslation();
@@ -32,7 +32,7 @@ const RegisterContent = ({ register, history }) => {
           <div className="row">
             {inputFields.map(({ type, field }, index) => (
               <div className="col-12" key={`register-form-field-${index}`}>
-                <AtomInput
+                <MoleculeInput
                   label={t(`general.${field}`)}
                   name={field}
                   value={user[field]}

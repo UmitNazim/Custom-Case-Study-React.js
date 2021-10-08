@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { forgotPassword } from 'store/Auth/actions';
-import { AtomButton, AtomInput, MoleculeCard, AtomLoader } from 'components';
+import { AtomButton, MoleculeInput, MoleculeCard, AtomLoader } from 'components';
 
 const ForgotPassword = ({ forgotPassword, history }) => {
   let { t } = useTranslation();
@@ -21,7 +21,7 @@ const ForgotPassword = ({ forgotPassword, history }) => {
     <div className="min-vh-100 d-flex justify-content-center align-items-center">
       <MoleculeCard style={{ width: '500px' }} title="Forgot Password Form">
         <form onSubmit={onForgotPassword}>
-          <AtomInput
+          <MoleculeInput
             label={t('general.email')}
             name="email"
             value={email}
